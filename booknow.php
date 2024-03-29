@@ -23,10 +23,7 @@ if(isset($_POST['submit'])) {
     $number_of_days = ceil(abs($checkout_date - $checkin_date) / (60 * 60 * 24)); 
     $total_price = $price_per_kg * $total_weight * $number_of_days;
     $resCheckRooms=checkRooms($db,$roomname);
-    if($_GET['share']==true)
-    {
-        $total_price=0.5*$total_price;
-    }
+   
     if($resCheckRooms=='full')
     {
         echo "<script>alert('No rooms available');</script>";
@@ -205,7 +202,7 @@ mysqli_close($db);
                     <label for="checkout">Pick Up Day:</label>&nbsp;
                     <input type="text" class="datepicker" name="checkout">
                     <div class="form-group">
-    <label for="weight">Enter Space:</label>
+    <label for="weight">Enter No of silos:</label>
     <input type="text" class="form-control" name="weight" placeholder="Enter volume" required>
 </div>
                 </div>
